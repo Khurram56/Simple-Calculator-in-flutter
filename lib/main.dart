@@ -24,10 +24,10 @@ class CalculatorHomePage extends StatefulWidget {
 }
 
 class _CalculatorHomePageState extends State<CalculatorHomePage> {
-      String _output = "0";
-      double num1 = 0.0;
-      double num2 = 0.0;
-      String operand = "";
+  String _output = "0";
+  double num1 = 0.0;
+  double num2 = 0.0;
+  String operand = "";
 
   buttonPressed(String buttonText) {
     if (buttonText == "Clear") {
@@ -35,7 +35,10 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
       num1 = 0.0;
       num2 = 0.0;
       operand = "";
-    } else if (buttonText == "+" || buttonText == "-" || buttonText == "*" || buttonText == "/") {
+    } else if (buttonText == "+" ||
+        buttonText == "-" ||
+        buttonText == "*" ||
+        buttonText == "/") {
       num1 = double.parse(_output);
       operand = buttonText;
       _output = "0";
@@ -60,6 +63,13 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
       num1 = 0.0;
       num2 = 0.0;
       operand = "";
+    } else if (buttonText == "⌫") {
+      if (_output != "0" && _output.isNotEmpty) {
+        _output = _output.substring(0, _output.length - 1);
+        if (_output.isEmpty) {
+          _output = "0";
+        }
+      }
     } else {
       if (_output == "0") {
         _output = buttonText;
@@ -71,61 +81,56 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
     setState(() {});
   }
 
-  
- Widget buildButton(String buttonText) {
-  Color buttonColor;
-  
-  if (buttonText == "=") {
-    buttonColor = Colors.green;
-  } else if (buttonText == "Clear") {
-    buttonColor = Colors.red;
-  }
-  else if (buttonText == "/") {
-    buttonColor = Colors.blue;
-  }
-  else if (buttonText == "*") {
-    buttonColor = Colors.blue;
-  }
-  else if (buttonText == "-") {
-    buttonColor = Colors.blue;
-  }
-  else if (buttonText == "+") {
-    buttonColor = Colors.blue;
-  }
-   else {
-    buttonColor = Colors.yellow; // Default color for other buttons
-  }
+  Widget buildButton(String buttonText) {
+    Color buttonColor;
 
-  return Expanded(
+    if (buttonText == "=") {
+      buttonColor = Colors.green;
+    } else if (buttonText == "Clear") {
+      buttonColor = Colors.red;
+    } else if (buttonText == "⌫") {
+      buttonColor = Colors.red;
+    } else if (buttonText == "/") {
+      buttonColor = Colors.blue;
+    } else if (buttonText == "*") {
+      buttonColor = Colors.blue;
+    } else if (buttonText == "-") {
+      buttonColor = Colors.blue;
+    } else if (buttonText == "+") {
+      buttonColor = Colors.blue;
+    } else {
+      buttonColor = Colors.yellow; // Default color for other buttons
+    }
 
-    child: Padding(
-      padding: const EdgeInsets.only(
-          bottom: 14.0), // Add padding only at the bottom
-      child: OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          backgroundColor: buttonColor,
-          foregroundColor: Colors.white,
-          shadowColor: Colors.red,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.only(
+            bottom: 14.0), // Add padding only at the bottom
+        child: OutlinedButton(
+          style: OutlinedButton.styleFrom(
+            backgroundColor: buttonColor,
+            foregroundColor: Colors.white,
+            shadowColor: Colors.red,
           ),
-        onPressed: () => buttonPressed(buttonText),
-        child: Text(
-          buttonText,
-          style: const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          onPressed: () => buttonPressed(buttonText),
+          child: Text(
+            buttonText,
+            style:
+                const TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child:  Text("Calculator"),
+          child: Text("Calculator"),
         ),
-        backgroundColor:Colors.yellow,
+        backgroundColor: Colors.yellow,
         foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.grey,
@@ -135,21 +140,20 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
             Container(
               alignment: Alignment.centerRight,
               color: Colors.red,
-              padding:
-                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 12.0),
+              padding: const EdgeInsets.symmetric(
+                  vertical: 30.0, horizontal: 12.0),
               child: Text(
                 _output,
                 style: const TextStyle(
-                    fontSize: 50.0, fontWeight: FontWeight.bold , color: Colors.white
-                    ),
+                    fontSize: 50.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
             ),
-            // const Expanded(child: Divider()),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 20),
-
                 Row(
                   children: <Widget>[
                     buildButton("7"),
@@ -162,7 +166,6 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                   ],
                 ),
                 const SizedBox(height: 5),
-
                 Row(
                   children: <Widget>[
                     buildButton("4"),
@@ -175,7 +178,6 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                   ],
                 ),
                 const SizedBox(height: 5),
-
                 Row(
                   children: <Widget>[
                     buildButton("1"),
@@ -188,7 +190,6 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                   ],
                 ),
                 const SizedBox(height: 5),
-
                 Row(
                   children: <Widget>[
                     buildButton("."),
@@ -201,12 +202,13 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                   ],
                 ),
                 const SizedBox(height: 5),
-
                 Row(
                   children: <Widget>[
                     buildButton("Clear"),
                     const SizedBox(width: 10),
                     buildButton("="),
+                    const SizedBox(width: 10),
+                    buildButton("⌫"),
                   ],
                 ),
                 const SizedBox(height: 5),
