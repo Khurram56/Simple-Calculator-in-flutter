@@ -150,8 +150,6 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
                     maxLines: 2,
-                    
-                    
               ),
             ),
             // const Expanded(child: Divider()),
