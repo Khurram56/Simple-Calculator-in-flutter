@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,13 +15,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: CalculatorHomePage(),
+      home: const CalculatorHomePage(),
     );
   }
 }
 
 class CalculatorHomePage extends StatefulWidget {
+  const CalculatorHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _CalculatorHomePageState createState() => _CalculatorHomePageState();
 }
 
@@ -135,90 +140,88 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
         foregroundColor: Colors.white,
       ),
       backgroundColor: Colors.grey,
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.topRight,
-              color: Colors.red,
-              padding: const EdgeInsets.symmetric(
-                  vertical: 70.0, horizontal: 12.0),
-              child: Text(
-                _output,
-                style: const TextStyle(
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
-                    maxLines: 2,
-              ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            alignment: Alignment.topRight,
+            color: Colors.white,
+            padding: const EdgeInsets.symmetric(
+                vertical: 70.0, horizontal: 12.0),
+            child: Text(
+              _output,
+              style: const TextStyle(
+                  fontSize: 40.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+                  maxLines: 2,
             ),
-            // const Expanded(child: Divider()),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const SizedBox(height: 50),
-                Row(
-                  children: <Widget>[
-                    buildButton("7"),
-                    const SizedBox(width: 10),
-                    buildButton("8"),
-                    const SizedBox(width: 10),
-                    buildButton("9"),
-                    const SizedBox(width: 10),
-                    buildButton("/"),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  children: <Widget>[
-                    buildButton("4"),
-                    const SizedBox(width: 10),
-                    buildButton("5"),
-                    const SizedBox(width: 10),
-                    buildButton("6"),
-                    const SizedBox(width: 10),
-                    buildButton("*"),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  children: <Widget>[
-                    buildButton("1"),
-                    const SizedBox(width: 10),
-                    buildButton("2"),
-                    const SizedBox(width: 10),
-                    buildButton("3"),
-                    const SizedBox(width: 10),
-                    buildButton("-"),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  children: <Widget>[
-                    buildButton("."),
-                    const SizedBox(width: 10),
-                    buildButton("0"),
-                    const SizedBox(width: 10),
-                    buildButton("00"),
-                    const SizedBox(width: 10),
-                    buildButton("+"),
-                  ],
-                ),
-                const SizedBox(height: 5),
-                Row(
-                  children: <Widget>[
-                    buildButton("Clear"),
-                    const SizedBox(width: 10),
-                    buildButton("="),
-                    const SizedBox(width: 10),
-                    buildButton("⌫"),
-                  ],
-                ),
-                const SizedBox(height: 5),
-              ],
-            )
-          ],
-        ),
+          ),
+          // const Expanded(child: Divider()),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const SizedBox(height: 50),
+              Row(
+                children: <Widget>[
+                  buildButton("7"),
+                  const SizedBox(width: 10),
+                  buildButton("8"),
+                  const SizedBox(width: 10),
+                  buildButton("9"),
+                  const SizedBox(width: 10),
+                  buildButton("/"),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                children: <Widget>[
+                  buildButton("4"),
+                  const SizedBox(width: 10),
+                  buildButton("5"),
+                  const SizedBox(width: 10),
+                  buildButton("6"),
+                  const SizedBox(width: 10),
+                  buildButton("*"),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                children: <Widget>[
+                  buildButton("1"),
+                  const SizedBox(width: 10),
+                  buildButton("2"),
+                  const SizedBox(width: 10),
+                  buildButton("3"),
+                  const SizedBox(width: 10),
+                  buildButton("-"),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                children: <Widget>[
+                  buildButton("."),
+                  const SizedBox(width: 10),
+                  buildButton("0"),
+                  const SizedBox(width: 10),
+                  buildButton("00"),
+                  const SizedBox(width: 10),
+                  buildButton("+"),
+                ],
+              ),
+              const SizedBox(height: 5),
+              Row(
+                children: <Widget>[
+                  buildButton("Clear"),
+                  const SizedBox(width: 10),
+                  buildButton("="),
+                  const SizedBox(width: 10),
+                  buildButton("⌫"),
+                ],
+              ),
+              const SizedBox(height: 5),
+            ],
+          )
+        ],
       ),
     );
   }
