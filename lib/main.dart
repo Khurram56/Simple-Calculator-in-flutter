@@ -105,9 +105,10 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.only(
-            bottom: 14.0), // Add padding only at the bottom
-        child: OutlinedButton(
-          style: OutlinedButton.styleFrom(
+            bottom: 14.0
+            ), // Add padding only at the bottom
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
             backgroundColor: buttonColor,
             foregroundColor: Colors.white,
             shadowColor: Colors.red,
@@ -138,22 +139,26 @@ class _CalculatorHomePageState extends State<CalculatorHomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.topRight,
               color: Colors.red,
               padding: const EdgeInsets.symmetric(
-                  vertical: 30.0, horizontal: 12.0),
+                  vertical: 70.0, horizontal: 12.0),
               child: Text(
                 _output,
                 style: const TextStyle(
-                    fontSize: 50.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white),
+                    maxLines: 2,
+                    
+                    
               ),
             ),
+            // const Expanded(child: Divider()),
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                const SizedBox(height: 20),
+                const SizedBox(height: 50),
                 Row(
                   children: <Widget>[
                     buildButton("7"),
